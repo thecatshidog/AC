@@ -1,0 +1,11 @@
+Element函数：
+	Element（id， initData）构造函数，id是容器名，initData：初始化model对象，就是data
+
+	通过replace的正则来获取到{{}}形式的表达式，然后将其转化成data-element-binding的属性
+
+	markdown函数将匹配到的{{}}中的子字符串变成<span data-element-binding="msg">形式
+
+	bind函数：将对应名称msg样式的从key值中取出来
+	先将含有data-element-binding标记的标签拿到，然后遍历这些对象，删除data-element-binding属性
+	最后通过Object.defineProperty()中的get和set方法来实现observe，set中遍历对象，赋值，get返回新值
+	textContent是文本节点
